@@ -1,0 +1,12 @@
+.prettierignore
+package.json
+package-lock.json
+yarn.lock
+README.md
+.env
+.env.*
+.editorconfig
+*.yml
+.gitignore
+*.svg
+public/index.html

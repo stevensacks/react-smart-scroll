@@ -1,15 +1,20 @@
-import React, {Component} from 'react'
-import {render} from 'react-dom'
+import data from './data';
+import React, {useState} from 'react';
+import ReactSmartScroll from '../../src';
+import {render} from 'react-dom';
+import TestRow from './TestRow';
+import './index.css';
 
-import Example from '../../src'
+const Demo = () => {
+    const [clicked, setClicked] = useState('Click on a row');
+    const onClick = index => setClicked(`Clicked on row ${index}`);
+    return (
+        <div>
+            <h1>React Smart Scroll Demo</h1>
+            <div className="click-status">{clicked}</div>
+            <ReactSmartScroll className="demo-smart-scroll" data={data} onClick={onClick} row={TestRow}/>
+        </div>
+    );
+};
 
-class Demo extends Component {
-  render() {
-    return <div>
-      <h1>react-smart-scroll Demo</h1>
-      <Example/>
-    </div>
-  }
-}
-
-render(<Demo/>, document.querySelector('#demo'))
+render(<Demo/>, document.querySelector('#demo'));
