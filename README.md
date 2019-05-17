@@ -6,8 +6,6 @@ If you're looking for a lightweight, high-performance, easy-to-use way to render
 
 "Smart Scrolling" only renders the visible rows, with some buffer rows above and below. It supports dynamic height rows.
 
-react-smart-scroll is way more efficient and way easier to use than react-window or react-virtualized.
-
 It is un-opinionated, and gives exactly you what you need with minimum configuration. Namely, fast rendering of long lists, and automatic support for variable height rows, even if they change height at runtime due to resizing, etc.
 
 **This component uses React Hooks, so you'll need to be running React 16.8.x or above.**
