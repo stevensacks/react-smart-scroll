@@ -85,7 +85,7 @@ The latest version of Firefox doesn't seem to honor React's rendering speed with
 
 The good news is that using the mouse wheel to scroll looks good in all browsers.
 
-### Future Stuff
+## Future Stuff
 I'm working on the ability to jump to a specific row in the list. This isn't as easy as you might think. It will probably be a prop called `startIndex` or something. I haven't decided that, yet.
 
 If you have any feature ideas, be sure to let me know in the github issues. As long as it doesn't bloat the code, I'll consider it.
