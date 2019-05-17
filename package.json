@@ -11,11 +11,9 @@
     "react scroll",
     "react smart scroll",
     "react list",
-    "react list scroll",
-    "react hooks"
+    "react list scroll"
   ],
   "main": "lib/index.js",
-  "module": "es/index.js",
   "files": [
     "es",
     "lib"
