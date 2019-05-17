@@ -17,6 +17,7 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
+    "es",
     "lib"
   ],
   "scripts": {
