@@ -1,6 +1,5 @@
 # react-smart-scroll
 
-[![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
 
 If you're looking for a lightweight, high-performance, easy-to-use way to render long lists efficiently in React, you found it.
