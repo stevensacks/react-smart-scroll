@@ -13,7 +13,7 @@ import useScroll from '../hooks/useScroll';
 import useScrollToTop from '../hooks/useScrollToTop';
 
 const ReactSmartScroll = props => {
-    const {className, data, row, rowHeight, style, ...rowProps} = props;
+    const {className, data, overflow, row, rowHeight, style, ...rowProps} = props;
 
     const [actualHeights, setActualHeights] = useReducer((state, action) => {
         if (!action.reset) {
@@ -79,7 +79,7 @@ const ReactSmartScroll = props => {
     const {endIndex, paddingBottom, paddingTop, startIndex} = measurements;
 
     return (
-        <div ref={scrollRef} className={className || ''} style={style}>
+        <div ref={scrollRef} className={className || ''} style={{overflow, ...style}}>
             <div style={{paddingBottom, paddingTop: paddingTop}}>
                 {data.slice(startIndex, endIndex + 1).map((item, i) => (
                     <ReactSmartScrollRow
@@ -100,6 +100,7 @@ const ReactSmartScroll = props => {
 ReactSmartScroll.defaultProps = {
     className: '',
     data: [],
+    overflow: 'auto',
     row: () => null,
     rowHeight: 100,
     style: {},

@@ -1,6 +1,6 @@
 {
   "name": "react-smart-scroll",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Smart Scroll React Component for long lists",
   "author": "Steven Sacks",
   "homepage": "https://github.com/stevensacks/react-smart-scroll",
@@ -14,6 +14,7 @@
     "react list scroll"
   ],
   "main": "lib/index.js",
+  "module": "es/index.js",
   "files": [
     "es",
     "lib"

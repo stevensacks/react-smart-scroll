@@ -15,9 +15,16 @@ At its most basic, you pass an array of data and a row component to render the i
 
 All of the props are optional. If you don't provide any data or a row component, it won't render anything, but it won't cause any errors, either.
 
+You need to apply `height`, either in the css class or the style object. You can use a specific height, or `calc()`.
+
+Due to a CSS limitation with how overflow works with padding, `height: 100%` does not work.
+
+The `overflow` default value of `auto` is applied via `style`. So, if you want to use a css class to control it, you need to pass `null`, `undefined`, or an empty string to `overflow`. If you use a style object, you can set it there, since the default `auto` is applied before your style object and thus can be overwritten that way.
+
 #### Props
 - `className` - A css className that will be applied to the component.
 - `data` - An array of items to be passed to your row component.
+- `overflow` - You can set this to `auto` or `scroll` ("auto" is the default).
 - `row` - Your row component.
 - `rowHeight` - Starting row height (100 by default) - it starts with this as an estimate for all rows, and then measures and caches the actual height of each row is as you scroll.
 - `style` - A style object applied to the component if you prefer using inline styling instead of css.
@@ -29,6 +36,7 @@ import ReactSmartScroll from 'react-smart-scroll';
 <ReactSmartScroll 
     className="demo-smart-scroll" 
     data={data} 
+    overflow="scroll"
     row={TestRow}
     onClick={() => console.log('Hello!')} // passed to row components
     label="My text is: " // passed to row components
@@ -49,12 +57,7 @@ Your row component receives the following props:
 - `height` - The current measured height of the row. It's provided for debugging or if you have a use for it.
 - `rowIndex` - The index of the item in the data array. Also provided for debugging, use if you like.
 - `rowRef` - *required* You need to include `ref={rowRef}` prop on your row component's container element.
-- `...rowProps` - Any additional props you passed to the ReactSmartScroll component will be available on every row.
-
-ReactSmartScroll does not come with any default styling. Two properties are required in the css class or the style object. This provides complete flexibility in how its implemented.
-
-1. `height` - You need to provide a height or it won't work. Due to the way CSS works with padding, `height: 100%` will not work. You can use a specific height, or `calc()`.
-2. `overflow-y` Set this to `auto` or `scroll`.
+- `...rowProps` - Any additional props you passed to the ReactSmartScroll component will be available on every row. 
 
 ## How It Works
 ReactSmartscroll renders enough rows to fill the visible space of the scroll area, plus an extra one above and below. It measures the height of each of the visible row and caches that height as you scroll (or resize) so that the next render of the same row is more efficient. It simulates the total height of all the items by adjusting the padding top and bottom of the div that contains the rows as you scroll.
