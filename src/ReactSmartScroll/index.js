@@ -88,16 +88,15 @@ const ReactSmartScroll = props => {
             setMeasurements(measurements);
             if (start !== startAt) {
                 scrollRef.current.scrollTop = paddingTop;
-                defer(() => {
+                setTimeout(() => {
                     setStart(startAt);
                     if (data[startAt]) {
                         const el = document.querySelector(
                             `[data-id="${data[startAt].id}"]`
                         );
-
                         if (el) el.scrollIntoView();
                     }
-                });
+                }, 0);
             }
         }
     }, [
