@@ -12,7 +12,7 @@ const Demo = () => {
         <div>
             <h1>React Smart Scroll Demo</h1>
             <div className="click-status">{clicked}</div>
-            <ReactSmartScroll className="demo-smart-scroll" data={data} onClick={onClick} row={TestRow}/>
+            <ReactSmartScroll className="demo-smart-scroll" data={data} onClick={onClick} row={TestRow} startAt={10}/>
         </div>
     );
 };

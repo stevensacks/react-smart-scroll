@@ -24,5 +24,11 @@ export const calcEndIndex = (actualHeights, visibleHeight, startIndex) => {
     return len - 1;
 };
 
-export const sumRange = (array, start, end) =>
-    array.slice(start, end + 1).reduce((acc, val) => acc + val, 0);
+export const sumRange = (array, start, end) => {
+    let result = 0;
+    const e = end + 1;
+    for (let i = start; i < e; i++) {
+        result += array[i] || 0;
+    }
+    return result;
+};

@@ -27,6 +27,7 @@ The `overflow` default value of `auto` is applied via `style`. So, if you want t
 - `overflow` - You can set this to `auto` or `scroll` ("auto" is the default).
 - `row` - Your row component.
 - `rowHeight` - Starting row height (100 by default) - it starts with this as an estimate for all rows, and then measures and caches the actual height of each row is as you scroll.
+- `startAt` - You can pass an index to start the list at (0 by default).
 - `style` - A style object applied to the component if you prefer using inline styling instead of css.
 - `...rowProps` - Any additional props you pass will be applied to your row components, for example `onClick`.
 
@@ -38,6 +39,7 @@ import ReactSmartScroll from 'react-smart-scroll';
     data={data} 
     overflow="scroll"
     row={TestRow}
+    startAt={5}
     onClick={() => console.log('Hello!')} // passed to row components
     label="My text is: " // passed to row components
 />
@@ -67,9 +69,7 @@ Unlike other virtual scrolling components/libraries out there, there are no unne
 #### Firefox Note
 The latest version of Firefox doesn't seem to keep up with React's rendering speed with `useLayoutEffect()` or `useEffect()`, so if you grab the scrollbar and scroll up and down really fast, you'll see blank space momentarily. Other browsers don't appear to have this problem. Using the mouse wheel to scroll looks good in all browsers.
 
-## Future Stuff
-I'm working on the ability to scroll to a specific row in the list programmatically.
-
+## Closing Note
 I hope you enjoy using this component as much as I enjoyed making it!
 
 Follow me:
