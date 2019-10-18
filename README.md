@@ -62,12 +62,19 @@ Your row component receives the following props:
 - `...rowProps` - Any additional props you passed to the ReactSmartScroll component will be available on every row. 
 
 ## How It Works
-ReactSmartscroll renders enough rows to fill the visible space of the scroll area, plus an extra one above and below. It measures the height of each of the visible row and caches that height as you scroll (or resize) so that the next render of the same row is more efficient. It simulates the total height of all the items by adjusting the padding top and bottom of the div that contains the rows as you scroll.
+ReactSmartScroll renders enough rows to fill the visible space of the scroll area, plus an extra one above and below. It measures the height of each of the visible row and caches that height as you scroll (or resize) so that the next render of the same row is more efficient. It simulates the total height of all the items by adjusting the padding top and bottom of the div that contains the rows as you scroll.
 
 Unlike other virtual scrolling components/libraries out there, there are no unnecessary wrapper divs for your rows, it doesn't use absolute positioning, and doesn't require any polyfills.
  
 #### Firefox Note
 The latest version of Firefox doesn't seem to keep up with React's rendering speed with `useLayoutEffect()` or `useEffect()`, so if you grab the scrollbar and scroll up and down really fast, you'll see blank space momentarily. Other browsers don't appear to have this problem. Using the mouse wheel to scroll looks good in all browsers.
+
+### rowRef Note
+>Why does React Smart Scroll pass `rowRef` instead of just passing `ref`?
+
+This removes the burden of having to wrap functional row components with `React.forwardRef()`. 
+
+IMO, it's easier and more flexible for you to use `rowRef`.
 
 ## Closing Note
 I hope you enjoy using this component as much as I enjoyed making it!
