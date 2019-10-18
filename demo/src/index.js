@@ -12,9 +12,15 @@ const Demo = () => {
         <div>
             <h1>React Smart Scroll Demo</h1>
             <div className="click-status">{clicked}</div>
-            <ReactSmartScroll className="demo-smart-scroll" data={data} onClick={onClick} row={TestRow} startAt={5}/>
+            <ReactSmartScroll
+                className="demo-smart-scroll"
+                data={data}
+                onClick={onClick}
+                row={TestRow}
+                startAt={16}
+            />
         </div>
     );
 };
 
-render(<Demo/>, document.querySelector('#demo'));
+render(<Demo />, document.querySelector('#demo'));

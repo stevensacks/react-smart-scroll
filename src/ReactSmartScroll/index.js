@@ -1,11 +1,13 @@
 import {calcEndIndex, calcStartIndex, sumRange} from './utils';
 import React, {
+    createRef,
     useEffect,
     useLayoutEffect,
     useReducer,
     useRef,
     useState,
 } from 'react';
+import PropTypes from 'prop-types';
 import ReactSmartScrollRow from './ReactSmartScrollRow';
 import useComponentRect from '../hooks/useComponentRect';
 import useScroll from '../hooks/useScroll';
@@ -25,6 +27,12 @@ const ReactSmartScroll = props => {
 
     const [start, setStart] = useState(0);
 
+    const [refs, setRefs] = useState(
+        Array(data.length)
+            .fill(undefined)
+            .map(() => createRef())
+    );
+
     const [actualHeights, setActualHeights] = useReducer((state, action) => {
         if (!action.reset) {
             const next = [...state];
@@ -35,8 +43,16 @@ const ReactSmartScroll = props => {
     }, []);
 
     useEffect(() => {
+        setRefs(
+            Array(data.length)
+                .fill(undefined)
+                .map(() => createRef())
+        );
+    }, [data.length]);
+
+    useEffect(() => {
         setActualHeights({reset: true});
-    }, [data.length, rowHeight, setActualHeights]);
+    }, [data.length, rowHeight]);
 
     const [measurements, setMeasurements] = useState({
         startIndex: 0,
@@ -91,9 +107,7 @@ const ReactSmartScroll = props => {
                 setTimeout(() => {
                     setStart(startAt);
                     if (data[startAt]) {
-                        const el = document.querySelector(
-                            `[data-id="${data[startAt].id}"]`
-                        );
+                        const el = refs[startAt].current;
                         if (el) el.scrollIntoView();
                     }
                 }, 0);
@@ -102,6 +116,7 @@ const ReactSmartScroll = props => {
     }, [
         actualHeights,
         data,
+        refs,
         scroll.top,
         setMeasurements,
         setStart,
@@ -128,11 +143,22 @@ const ReactSmartScroll = props => {
                         rowHeight={actualHeights[startIndex + i]}
                         rowIndex={startIndex + i}
                         rowProps={rowProps}
+                        rowRef={refs[startIndex + i]}
                     />
                 ))}
             </div>
         </div>
     );
+};
+
+ReactSmartScroll.propTypes = {
+    className: PropTypes.string,
+    data: PropTypes.array,
+    overflow: PropTypes.string,
+    row: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+    rowHeight: PropTypes.number,
+    startAt: PropTypes.number,
+    style: PropTypes.object,
 };
 
 ReactSmartScroll.defaultProps = {

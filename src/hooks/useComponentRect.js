@@ -11,9 +11,7 @@ export default ref => {
             window.addEventListener('resize', onResize);
             setRect(current.getBoundingClientRect());
         }
-        return () => {
-            window.removeEventListener('resize', onResize);
-        };
+        return () => window.removeEventListener('resize', onResize);
     }, [ref]);
     return rect;
 };

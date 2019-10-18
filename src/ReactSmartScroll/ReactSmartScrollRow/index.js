@@ -1,18 +1,26 @@
-import React, {useLayoutEffect, useRef, useState} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import useComponentRect from '../../hooks/useComponentRect';
 
 const ReactSmartScrollRow = props => {
-    const {Component, data, onUpdate, rowHeight, rowIndex, rowProps} = props;
+    const {
+        Component,
+        data,
+        onUpdate,
+        rowHeight,
+        rowIndex,
+        rowProps,
+        rowRef,
+    } = props;
     const [height, setHeight] = useState(rowHeight);
 
-    const ref = useRef(null);
-    const rect = useComponentRect(ref);
+    const rect = useComponentRect(rowRef);
 
     useLayoutEffect(() => {
         if (rect.height && rect.height !== height) {
             setHeight(rect.height);
         }
-    }, [height, rect, ref]);
+    }, [height, rect, rowRef]);
 
     useLayoutEffect(() => {
         onUpdate({rowIndex, height});
@@ -23,10 +31,20 @@ const ReactSmartScrollRow = props => {
             data={data}
             height={height}
             rowIndex={rowIndex}
-            rowRef={ref}
+            rowRef={rowRef}
             {...rowProps}
         />
     );
+};
+
+ReactSmartScrollRow.propTypes = {
+    Component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+    data: PropTypes.object,
+    onUpdate: PropTypes.func,
+    rowHeight: PropTypes.number,
+    rowIndex: PropTypes.number,
+    rowProps: PropTypes.object,
+    rowRef: PropTypes.object,
 };
 
 export default React.memo(ReactSmartScrollRow);

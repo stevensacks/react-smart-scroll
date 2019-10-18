@@ -1,6 +1,6 @@
 {
   "name": "react-smart-scroll",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Smart Scroll React Component for long lists",
   "author": "Steven Sacks",
   "homepage": "https://github.com/stevensacks/react-smart-scroll",
@@ -10,14 +10,10 @@
     "react",
     "react scroll",
     "react smart scroll",
+    "react virtual scrolling",
+    "react virtualized scrolling",
     "react list",
     "react list scroll"
-  ],
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "files": [
-    "es",
-    "lib"
   ],
   "scripts": {
     "build": "nwb build-react-component",
@@ -28,13 +24,45 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {},
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-plugin-flowtype": "^4.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
     "nwb": "0.23.x",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "prettier": "^1.18.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   }
 }
