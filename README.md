@@ -1,6 +1,6 @@
 # react-smart-scroll
 
-[![npm package][npm-badge]][npm]
+[![npm version](https://badge.fury.io/js/react-smart-scroll.svg)](//npmjs.com/package/react-smart-scroll)
 
 ReactSmartScroll is a lightweight, high-performance, easy-to-use way to render long lists efficiently in React. It only renders the visible rows, with a few buffer rows above and below.
 
