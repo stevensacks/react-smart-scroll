@@ -10,7 +10,7 @@ ReactSmartScroll is (mostly) un-opinionated, with minimum configuration. It has 
 ```
 yarn add react-smart-scroll
 
-npm install --save react-smart-scroll
+npm i -S react-smart-scroll
 ```
 
 ### Super Simple Sample:
