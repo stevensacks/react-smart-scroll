@@ -6,6 +6,9 @@ ReactSmartScroll is a lightweight, high-performance, easy-to-use way to render l
 
 ReactSmartScroll is un-opinionated, with minimum configuration. It has automatic support for variable height rows, even if they change height at runtime due to resizing, expanding, etc.
 
+Working Demo with variable height rows:
+https://codesandbox.io/s/react-smart-scroll-demo-3x1ym
+
 **This component uses React Hooks, so it requires React 16.8.x or above.**
 
 ## How To Use
