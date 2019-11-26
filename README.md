@@ -4,7 +4,7 @@
 
 ReactSmartScroll is a lightweight, high-performance, easy-to-use way to render long lists efficiently in React. It only renders the visible rows, with a few buffer rows above and below.
 
-ReactSmartScroll is un-opinionated, with minimum configuration. It has automatic support for variable height rows, even if they change height at runtime due to resizing, expanding, etc.
+ReactSmartScroll is (mostly) un-opinionated, with minimum configuration. It has automatic support for variable height rows, even if they change height at runtime due to resizing, expanding, etc.
 
 ### Installation
 ```
