@@ -1,3 +1,5 @@
+// these utils are imperative because they are called in useLayoutEffect
+// and performance is the priority
 export const calcStartIndex = (actualHeights, top = 0) => {
     const len = actualHeights.length;
     if (top === 0 || len < 2) return 0;

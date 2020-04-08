@@ -26,12 +26,7 @@ const ReactSmartScroll = props => {
     } = props;
 
     const [start, setStart] = useState(0);
-
-    const [refs, setRefs] = useState(
-        Array(data.length)
-            .fill(undefined)
-            .map(() => createRef())
-    );
+    const [refs, setRefs] = useState([]);
 
     const [actualHeights, setActualHeights] = useReducer((state, action) => {
         if (!action.reset) {
@@ -113,17 +108,7 @@ const ReactSmartScroll = props => {
                 }, 0);
             }
         }
-    }, [
-        actualHeights,
-        data,
-        refs,
-        scroll.top,
-        setMeasurements,
-        setStart,
-        start,
-        startAt,
-        visible.height,
-    ]);
+    }, [actualHeights, data, refs, scroll.top, start, startAt, visible.height]);
 
     const {endIndex, paddingBottom, paddingTop, startIndex} = measurements;
 

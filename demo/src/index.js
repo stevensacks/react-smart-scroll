@@ -1,5 +1,5 @@
-import data from './data';
 import React, {useState} from 'react';
+import data from './data';
 import ReactSmartScroll from '../../src';
 import {render} from 'react-dom';
 import TestRow from './TestRow';

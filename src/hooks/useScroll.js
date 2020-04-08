@@ -10,9 +10,7 @@ export default ref => {
                 left: current.scrollLeft,
             });
         };
-        if (current) {
-            current.addEventListener('scroll', onScroll);
-        }
+        if (current) current.addEventListener('scroll', onScroll);
         return () => current && current.removeEventListener('scroll', onScroll);
     }, [ref]);
     return scroll;
