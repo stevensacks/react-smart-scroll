@@ -1,7 +1,5 @@
 # react-smart-scroll
 
-[![npm version](https://badge.fury.io/js/react-smart-scroll.svg)](//npmjs.com/package/react-smart-scroll)
-
 ReactSmartScroll is a lightweight, high-performance, easy-to-use way to render long lists efficiently in React. It only renders the visible rows, with a few buffer rows above and below.
 
 ReactSmartScroll is (mostly) un-opinionated, with minimum configuration. It has automatic support for variable height rows, even if they change height at runtime due to resizing, expanding, etc.
@@ -17,7 +15,7 @@ yarn add react-smart-scroll
 
 ### Super Simple Sample:
 ```javascript
-import ReactSmartScroll from 'react-smart-scroll';
+import ReactSmartScroll from '@dotsub/react-smart-scroll';
 
 const data = [
     {id: 1, text: 'Hello'},
@@ -35,8 +33,6 @@ export default () => (
 );
 ```
 
-### Working Demo with variable height rows:
-https://codesandbox.io/s/react-smart-scroll-demo-3x1ym
 
 **This component uses React Hooks, so it requires React 16.8.x or above.**
 
@@ -65,7 +61,7 @@ Due to a CSS limitation with how overflow works with padding, `height: 100%` doe
 The `overflow` default value of `auto` is applied via `style`. If you want to use a css class to control it, you need to pass `null`, `undefined`, or an empty string to `overflow`. If you use a style object, you can set it there, since the default `auto` is applied before your style object and thus can be overwritten that way.
 
 ```javascript
-import ReactSmartScroll from 'react-smart-scroll';
+import ReactSmartScroll from '@dotsub/react-smart-scroll';
 
 <ReactSmartScroll 
     className="demo-smart-scroll" 
@@ -111,12 +107,6 @@ IMO, it's easier and more flexible for you to use `rowRef`.
 
 ## Closing Note
 I hope you enjoy using this component as much as I enjoyed making it!
-
-Follow me:
-- twitter: https://twitter.com/stevensacks
-- github: https://github.com/stevensacks
-- gitlab: https://gitlab.com/stevensacks
-- linkedin: https://www.linkedin.com/in/stevensacks
 
 [npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
 [npm]: https://www.npmjs.org/package/npm-package
