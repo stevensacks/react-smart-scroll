@@ -99,7 +99,7 @@ const ReactSmartScroll = props => {
                 scrollRef.current.scrollTop = paddingTop;
                 setTimeout(() => {
                     setStart(startAt);
-                    if (data[startAt]) {
+                    if (data[startAt] && refs[startAt]) {
                         const el = refs[startAt].current;
                         if (el) el.scrollIntoView();
                     }
