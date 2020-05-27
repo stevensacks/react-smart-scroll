@@ -150,7 +150,6 @@ ReactSmartScroll.defaultProps = {
     overflow: 'auto',
     row: () => null,
     rowHeight: 100,
-    startAt: 0,
     style: {},
 };
 

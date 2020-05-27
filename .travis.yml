@@ -1,16 +1,19 @@
-sudo: false
-
 language: node_js
 node_js:
-  - 8
+  - 12
+cache: npm
 
-before_install:
-  - npm install codecov.io coveralls
+script:
+  - npm run build
 
 after_success:
-  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - npm run lint
+  - bash <(curl -s https://codecov.io/bash)
+  - ./scripts/post-build.sh
 
-branches:
-  only:
-    - master
+deploy:
+  provider: npm
+  edge: true
+  api_token: $NPM_API_TOKEN
+  on:
+    branch: master
