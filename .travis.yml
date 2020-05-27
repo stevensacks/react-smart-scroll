@@ -3,6 +3,10 @@ node_js:
   - 12
 cache: npm
 
+notifications:
+  slack:
+    secure: Jhe9JzR9OtPhb9yKNqOROmROcjxiU/aqaubVjEpoMhkGwTPHFhtdIXs6+rBb0wMlSIXDHiGziwL1Ysi/xiPKhrCWV6nxTg4uVqzM3mtTcDlVkTKZRwL/csr0jieEZ9AVaWcNZUTSQ9XGsmxENhKxJbdJ9mXdv47SBmXy4kOylq3gBu3ZFnbseE23WCPmYXopfnSO7SzaXxfpKnY32hwa/Hu2rQ/QuznpMF/oF+Nn4Fh3gkQg/17K2rbCPQdzyK5ZKkgTvZPEM2hCL+AJUP4evlubV1RFpeM2IGRoBKr1kS8mQMiX4iir8s90rpT6OYfJx+CjvVLR8pG3R1EQfATJzIfHdRQqAvltxL++a+y9shWlQfQyR/8xHtNWvXVpexJNwL2RkWOLj4smfZNinC21Uk/BdNpfHBNYChCYT0UAVo9FInRcHQUOr3Jvr3CfkIl+om/sIeJ2WhczX8uvJtCJfE9b/3bTF/5RSDPsKy3AMtC2K/REQtyUFJSGN3D1hKq1twZik1dgM90yRZAsCpnUeoiEpRrADbdkOSk2iCBFbVSWOuq7NruiBBI/togyfYA+00L8Tpv+EEqtekXwcZDyhGlDlKj0fB5Si29ktj4GVUrxGrmM4z6RY9MfweatiuRWkjxVh6W+mW7Q2ibuj+Bv18km2kN6BiitAtFXTcuF1RI=
+
 script:
   - npm run build
 
