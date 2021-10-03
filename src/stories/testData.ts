@@ -1,4 +1,4 @@
-export default [
+export const testData = [
     {
         id: 0,
         content:

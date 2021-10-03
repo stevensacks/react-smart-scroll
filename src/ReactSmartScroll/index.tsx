@@ -1,53 +1,66 @@
 import {calcEndIndex, calcStartIndex, sumRange} from './utils';
 import React, {
     createRef,
+    FC,
+    memo,
+    RefObject,
     useEffect,
     useLayoutEffect,
     useReducer,
     useRef,
     useState,
 } from 'react';
-import PropTypes from 'prop-types';
 import ReactSmartScrollRow from './ReactSmartScrollRow';
-import useComponentRect from '../hooks/useComponentRect';
-import useScroll from '../hooks/useScroll';
-import useScrollToTop from '../hooks/useScrollToTop';
+import useComponentHeight from './hooks/useComponentHeight';
+import useScrollTop from './hooks/useScrollTop';
+import {RowComponentProps, UpdateAction} from '../types';
 
-const ReactSmartScroll = props => {
+type Props = {
+    className?: string;
+    data?: any[];
+    overflow?: 'auto' | 'scroll';
+    row?: FC<RowComponentProps>;
+    rowHeight?: number;
+    startAt?: number;
+    style?: Record<string, any>;
+} & Record<string, any>;
+
+export const ReactSmartScroll = (props: Props) => {
     const {
         className,
-        data,
-        overflow,
-        row,
-        rowHeight,
-        startAt,
+        data = [],
+        overflow = 'auto',
+        row = () => null,
+        rowHeight = 100,
+        startAt = 0,
         style,
         ...rowProps
     } = props;
 
+    const {length} = data;
+
     const [start, setStart] = useState(0);
-    const [refs, setRefs] = useState([]);
+    const [refs, setRefs] = useState<RefObject<HTMLElement>[]>([]);
 
-    const [actualHeights, setActualHeights] = useReducer((state, action) => {
-        if (!action.reset) {
-            const next = [...state];
-            next[action.rowIndex] = action.height;
-            return next;
-        }
-        return Array(data.length).fill(rowHeight);
-    }, []);
-
-    useEffect(() => {
-        setRefs(
-            Array(data.length)
-                .fill(undefined)
-                .map(() => createRef())
-        );
-    }, [data.length]);
+    const [actualHeights, setActualHeights] = useReducer(
+        (state: number[], action: UpdateAction) => {
+            if (action.type === 'update') {
+                const next = [...state];
+                next[action.payload.rowIndex] = action.payload.height;
+                return next;
+            }
+            return Array(data.length).fill(rowHeight);
+        },
+        []
+    );
 
     useEffect(() => {
-        setActualHeights({reset: true});
-    }, [data.length, rowHeight]);
+        setRefs(Array.from({length}).map(() => createRef()));
+    }, [length]);
+
+    useEffect(() => {
+        setActualHeights({type: 'reset'});
+    }, [length, rowHeight]);
 
     const [measurements, setMeasurements] = useState({
         startIndex: 0,
@@ -56,21 +69,21 @@ const ReactSmartScroll = props => {
         paddingTop: 0,
     });
 
-    const scrollRef = useRef(undefined);
-    const scroll = useScroll(scrollRef);
-    const visible = useComponentRect(scrollRef);
-    useScrollToTop(data, scrollRef);
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const scrollTop = useScrollTop(scrollRef);
+    const visibleHeight = useComponentHeight(scrollRef);
 
     // useEffect with this has considerable redraw lag
     useLayoutEffect(() => {
-        if (visible.height) {
+        if (scrollRef.current && visibleHeight) {
             const startIndex =
                 start !== startAt
                     ? startAt
-                    : calcStartIndex(actualHeights, scroll.top);
+                    : calcStartIndex(actualHeights, scrollTop);
+
             const endIndex = calcEndIndex(
                 actualHeights,
-                visible.height,
+                visibleHeight,
                 startIndex
             );
 
@@ -83,20 +96,19 @@ const ReactSmartScroll = props => {
                     ? sumRange(actualHeights, endIndex + 1, last) + 17
                     : 0;
 
-            const contentHeight = sumRange(
+            /*const contentHeight = sumRange(
                 actualHeights,
                 0,
                 actualHeights.length
-            );
+            );*/
 
-            const measurements = {
+            setMeasurements({
                 startIndex,
                 endIndex,
                 paddingBottom,
                 paddingTop,
-                contentHeight,
-            };
-            setMeasurements(measurements);
+            });
+
             if (start !== startAt) {
                 scrollRef.current.scrollTop = paddingTop;
                 setTimeout(() => {
@@ -105,10 +117,10 @@ const ReactSmartScroll = props => {
                         const el = refs[startAt].current;
                         if (el) el.scrollIntoView();
                     }
-                }, 0);
+                });
             }
         }
-    }, [actualHeights, data, refs, scroll.top, start, startAt, visible.height]);
+    }, [actualHeights, data, refs, scrollTop, start, startAt, visibleHeight]);
 
     const {endIndex, paddingBottom, paddingTop, startIndex} = measurements;
 
@@ -136,24 +148,4 @@ const ReactSmartScroll = props => {
     );
 };
 
-ReactSmartScroll.propTypes = {
-    className: PropTypes.string,
-    data: PropTypes.array,
-    overflow: PropTypes.string,
-    row: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-    rowHeight: PropTypes.number,
-    startAt: PropTypes.number,
-    style: PropTypes.object,
-};
-
-ReactSmartScroll.defaultProps = {
-    className: '',
-    data: [],
-    overflow: 'auto',
-    row: () => null,
-    rowHeight: 100,
-    startAt: 0,
-    style: {},
-};
-
-export default React.memo(ReactSmartScroll);
+export default memo(ReactSmartScroll);
