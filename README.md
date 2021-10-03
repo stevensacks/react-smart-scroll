@@ -35,8 +35,21 @@ export default () => (
 );
 ```
 
+### TypeScript
+Typing for your row components is included as a named export.
+```typescript jsx
+import {ReactSmartScrollRow} from 'react-smart-scroll';
+
+const TypedTestRow: ReactSmartScrollRow = ({data, rowRef}) => (
+    <div ref={rowRef}>
+        {data.text}
+    </div>
+);
+```
+
 ### Working Demo with variable height rows:
-https://codesandbox.io/s/react-smart-scroll-demo-3x1ym
+* [JavaScript Demo](https://codesandbox.io/s/react-smart-scroll-demo-3x1ym)
+* [TypeScript Demo](https://codesandbox.io/s/react-smart-scroll-ts-demo-9p3kz)
 
 **This component uses React Hooks, so it requires React 16.8.x or above.**
 
@@ -65,7 +78,7 @@ Due to a CSS limitation with how overflow works with padding, `height: 100%` doe
 The `overflow` default value of `auto` is applied via `style`. If you want to use a css class to control it, you need to pass `null`, `undefined`, or an empty string to `overflow`. If you use a style object, you can set it there, since the default `auto` is applied before your style object and thus can be overwritten that way.
 
 ```javascript
-import ReactSmartScroll from 'react-smart-scroll';
+import ReactSmartScroll, {ReactSmartScrollRow} from 'react-smart-scroll';
 
 <ReactSmartScroll 
     className="demo-smart-scroll" 
@@ -77,7 +90,7 @@ import ReactSmartScroll from 'react-smart-scroll';
     label="My text is: " // passed to row components
 />
 
-const TestRow = ({data, height, label, onClick, rowIndex, rowRef}) => (
+const TestRow: ReactSmartScrollRow = ({data, height, label, onClick, rowIndex, rowRef}) => (
     <div ref={rowRef} className="test-row" onClick={() => onClick(rowIndex)}>
         <strong>[{data.id}]</strong>: {height}px<br/>
         <label>{label}</label>:<p>{data.text}</p>
