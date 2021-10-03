@@ -1,10 +1,10 @@
 import React, {memo, RefObject, useLayoutEffect, useState} from 'react';
+import {ReactSmartScrollRow} from '../../types';
 import useComponentHeight from '../hooks/useComponentHeight';
-import {RowComponent} from '../../types';
 import {UpdateAction} from '../utils';
 
 interface Props {
-    Component: RowComponent;
+    Component: ReactSmartScrollRow;
     data: any;
     onUpdate: (event: UpdateAction) => void;
     rowHeight: number;
@@ -13,7 +13,7 @@ interface Props {
     rowRef: RefObject<HTMLElement>;
 }
 
-const ReactSmartScrollRow = (props: Props) => {
+const SmartScrollRow = (props: Props) => {
     const {Component, data, onUpdate, rowHeight, rowIndex, rowProps, rowRef} =
         props;
 
@@ -41,4 +41,4 @@ const ReactSmartScrollRow = (props: Props) => {
     );
 };
 
-export default memo(ReactSmartScrollRow);
+export default memo(SmartScrollRow);

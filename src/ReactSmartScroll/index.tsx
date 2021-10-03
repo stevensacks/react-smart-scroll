@@ -1,4 +1,3 @@
-import {calcEndIndex, calcStartIndex, sumRange, UpdateAction} from './utils';
 import React, {
     createRef,
     memo,
@@ -9,16 +8,17 @@ import React, {
     useRef,
     useState,
 } from 'react';
-import ReactSmartScrollRow from './ReactSmartScrollRow';
+import SmartScrollRow from './SmartScrollRow';
+import {calcEndIndex, calcStartIndex, sumRange, UpdateAction} from './utils';
 import useComponentHeight from './hooks/useComponentHeight';
 import useScrollTop from './hooks/useScrollTop';
-import {RowComponent} from '../types';
+import {ReactSmartScrollRow} from '../types';
 
 type Props = {
     className?: string;
     data?: any[];
     overflow?: 'auto' | 'scroll';
-    row?: RowComponent;
+    row?: ReactSmartScrollRow;
     rowHeight?: number;
     startAt?: number;
     style?: Record<string, any>;
@@ -131,7 +131,7 @@ export const ReactSmartScroll = (props: Props) => {
         >
             <div style={{paddingBottom, paddingTop}}>
                 {data.slice(startIndex, endIndex + 1).map((item, i) => (
-                    <ReactSmartScrollRow
+                    <SmartScrollRow
                         key={item.id || startIndex + i}
                         Component={row}
                         data={item}

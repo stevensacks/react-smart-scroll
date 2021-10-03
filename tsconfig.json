@@ -9,6 +9,7 @@
     "allowJs": true,
     "declaration": true,
     "declarationDir": "./types",
+    "declarationMap": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

@@ -1,7 +1,7 @@
 import React from 'react';
-import {RowComponent} from '../../types';
+import {ReactSmartScrollRow} from '../../types';
 
-const TestRow: RowComponent = ({
+const TestRow: ReactSmartScrollRow = ({
     data,
     height,
     onClick,
