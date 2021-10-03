@@ -18,24 +18,15 @@
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rollup -c",
     "test": "react-scripts test",
     "prepublishOnly": "npm run build",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
-  },
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.4.3",
-    "web-vitals": "^1.0.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.0",
@@ -46,15 +37,24 @@
     "@storybook/node-logger": "^6.3.9",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.9",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "postcss": "^8.3.8",
     "prettier": "^2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
     "rollup": "^2.58.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.1",
     "rollup-plugin-typescript2": "^0.30.0",
-    "tslib": "^2.3.1"
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3"
   },
   "peerDependencies": {
     "react": "^17.0.2",
