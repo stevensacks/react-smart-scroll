@@ -38,3 +38,7 @@ export const sumRange = (array: number[], start: number, end: number) => {
     }
     return result;
 };
+
+export type UpdateAction =
+    | {type: 'reset'}
+    | {type: 'update'; payload: {height: number; rowIndex: number}};

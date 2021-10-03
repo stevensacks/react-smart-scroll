@@ -7,12 +7,15 @@
       "esnext"
     ],
     "allowJs": true,
+    "declaration": true,
+    "declarationDir": "./types",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
+    "useTsconfigDeclarationDir": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -22,5 +25,8 @@
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "dist",
   ]
 }

@@ -1,7 +1,6 @@
-import {calcEndIndex, calcStartIndex, sumRange} from './utils';
+import {calcEndIndex, calcStartIndex, sumRange, UpdateAction} from './utils';
 import React, {
     createRef,
-    FC,
     memo,
     RefObject,
     useEffect,
@@ -13,13 +12,13 @@ import React, {
 import ReactSmartScrollRow from './ReactSmartScrollRow';
 import useComponentHeight from './hooks/useComponentHeight';
 import useScrollTop from './hooks/useScrollTop';
-import {RowComponentProps, UpdateAction} from '../types';
+import {RowComponent} from '../types';
 
 type Props = {
     className?: string;
     data?: any[];
     overflow?: 'auto' | 'scroll';
-    row?: FC<RowComponentProps>;
+    row?: RowComponent;
     rowHeight?: number;
     startAt?: number;
     style?: Record<string, any>;

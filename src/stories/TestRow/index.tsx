@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
-import {RowComponentProps} from '../../types';
+import React from 'react';
+import {RowComponent} from '../../types';
 
-const TestRow: FC<RowComponentProps> = ({
+const TestRow: RowComponent = ({
     data,
     height,
     onClick,

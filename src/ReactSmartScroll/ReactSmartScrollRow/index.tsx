@@ -1,9 +1,10 @@
-import React, {FC, memo, RefObject, useLayoutEffect, useState} from 'react';
+import React, {memo, RefObject, useLayoutEffect, useState} from 'react';
 import useComponentHeight from '../hooks/useComponentHeight';
-import {RowComponentProps, UpdateAction} from '../../types';
+import {RowComponent} from '../../types';
+import {UpdateAction} from '../utils';
 
 interface Props {
-    Component: FC<RowComponentProps>;
+    Component: RowComponent;
     data: any;
     onUpdate: (event: UpdateAction) => void;
     rowHeight: number;
