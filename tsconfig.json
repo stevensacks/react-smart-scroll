@@ -15,7 +15,6 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "useTsconfigDeclarationDir": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
