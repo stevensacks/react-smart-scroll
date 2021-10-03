@@ -8,8 +8,6 @@
     ],
     "allowJs": true,
     "declaration": true,
-    "declarationDir": "./types",
-    "declarationMap": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -27,6 +25,10 @@
     "src"
   ],
   "exclude": [
+    "node_modules",
     "dist",
+    "src/stories",
+    "src/setupTests.ts"
   ]
 }
+
